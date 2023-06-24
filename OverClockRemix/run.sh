@@ -7,7 +7,7 @@ fi
 
 if [ -z "$FOLDER" ]; then FOLDER="$HOME/Music/OC ReMix Collection/"; fi
 if [ -z "$START" ]; then START=1; fi
-if [ -z "$END" ]; then END=4500; fi
+if [ -z "$END" ]; then END=5000; fi
 if [ -z "$MIRROR" ]; then MIRROR="ocrmirror.org"; fi
 if [ -z "$LIMIT" ]; then LIMIT="100m"; fi
 if [ -z "$WAIT" ]; then WAIT=0; fi
@@ -201,7 +201,6 @@ for ((i=$START;i<=$END;i++)); do
         # ERROR="* Error: URL=\"$url\" (blank) for OCR$file (See <$LOGGABLE_HTML_URL>)";
         ERROR="* INFO: There was no song URL at the page <$LOGGABLE_HTML_URL> (This is only a problem if it happens in all cases)."
         >&2 echo "$ERROR"
-        echo "# $ERROR" >> "$LOG_PATH"
     fi
 done
 
