@@ -26,6 +26,17 @@ install_with_nix_env() {
   nix-env -iA "$@"
 }
 
+# Function to create the ~/Pictures/BingWallpaper directory
+create_bing_wallpaper_directory() {
+  mkdir -p ~/Pictures/BingWallpaper
+  echo "Created directory: ~/Pictures/BingWallpaper"
+}
+
+# Function to check if the ~/Pictures/BingWallpaper directory exists
+bing_wallpaper_directory_exists() {
+  [ -d ~/Pictures/BingWallpaper ]
+}
+
 # Array to store installed package names
 installed_packages=()
 
@@ -46,7 +57,7 @@ output_installed_packages() {
 # Check if running with sudo privileges, if not, ask for sudo
 check_sudo() {
   if [[ $EUID -ne 0 ]]; then
-    sudo -v >/dev/null 2>&1 || { echo "Please run the script with sudo." >&2; exit 1; }
+    sudo -v >/dev/null 2>&1 || { echo "Please enter your password to continue..." >&2; sudo -v; }
   fi
 }
 
@@ -79,4 +90,11 @@ else
   fi
 
   output_installed_packages
+fi
+
+# Check if the ~/Pictures/BingWallpaper directory exists, if not, create it
+if bing_wallpaper_directory_exists; then
+  echo "Directory ~/Pictures/BingWallpaper already exists."
+else
+  create_bing_wallpaper_directory
 fi
