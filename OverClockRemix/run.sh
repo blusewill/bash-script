@@ -5,56 +5,6 @@ if [ -f "$SHOW_W" ]; then
     rm "$SHOW_W"
 fi
 
-_DATE_STRING="`date '+%Y-%m-%d'`"
-LOG_PATH="$HOME/.var/log/ocremix-download-all-$_DATE_STRING.log"
-# ^ such as ~/.var/log/ocremix-download-all-2021-10-12.log
-
-echo >> "$LOG_PATH"
-echo "# `date`" >> "$LOG_PATH"
-
-DST="/dev/null"
-if [ "@$1" = "@show" ]; then
-    if [ "@$2" = "@c" ]; then
-        if [ -f "license.txt" ]; then
-            cat license.txt >&2
-        else
-            >&2 echo "See license.txt in the ocremix-download-all directory"
-            >&2 echo "or at <https://github.com/poikilos/ocremix-download-all>."
-        fi
-        exit 0
-    fi
-    DST="$SHOW_W"
-fi
-cat > $DST <<END
-    ocremix-download-all syncs ocremix.org's library with a directory.
-    Copyright (C) 2010 Kurin on ocremix.org
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-END
-if [ -f "$SHOW_W" ]; then
-    cat "$SHOW_W"
-    rm "$SHOW_W"
-    exit 0
-else
-    cat >&2 <<END
-    ocremix-download-all  Copyright (C) 2010 Kurin on ocremix.org
-    This program comes with ABSOLUTELY NO WARRANTY; for details type 'show w'.
-    This is free software, and you are welcome to redistribute it
-    under certain conditions; type 'show c' for details.
-END
-fi
-
 if [ -z "$FOLDER" ]; then FOLDER="$HOME/Music/OC ReMix Collection/"; fi
 if [ -z "$START" ]; then START=1; fi
 if [ -z "$END" ]; then END=4500; fi
@@ -244,7 +194,6 @@ for ((i=$START;i<=$END;i++)); do
             # to get the filename).
             # >&2 echo "* INFO: \"`pwd`/$DL_NAME\" already exists"
             >&2 echo "OK"
-            echo "#`pwd`/$DL_NAME" >> "$LOG_PATH"
             echo "# URL:$url"
             echo "`pwd`/$DL_NAME"
         fi
