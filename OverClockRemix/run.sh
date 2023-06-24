@@ -55,7 +55,7 @@ else
 END
 fi
 
-if [ -z "$FOLDER" ]; then FOLDER="~/Music/OC ReMix Collection"; fi
+if [ -z "$FOLDER" ]; then FOLDER="$HOME/Music/OC ReMix Collection/"; fi
 if [ -z "$START" ]; then START=1; fi
 if [ -z "$END" ]; then END=4500; fi
 if [ -z "$MIRROR" ]; then MIRROR="ocrmirror.org"; fi
