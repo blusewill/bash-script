@@ -6,8 +6,8 @@ if [ -f "$SHOW_W" ]; then
 fi
 
 if [ -z "$FOLDER" ]; then FOLDER="$HOME/Music/OC ReMix Collection/"; fi
-if [ -z "$START" ]; then START=1; fi
-if [ -z "$END" ]; then END=5000; fi
+if [ -z "$START" ]; then START=4859; fi
+if [ -z "$END" ]; then END=4883; fi
 if [ -z "$MIRROR" ]; then MIRROR="ocrmirror.org"; fi
 if [ -z "$LIMIT" ]; then LIMIT="100m"; fi
 if [ -z "$WAIT" ]; then WAIT=0; fi

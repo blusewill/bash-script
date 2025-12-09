@@ -1,0 +1,8 @@
+{
+  "auth": [
+    {
+      "user": "belabox-user",
+      "key": "belabox-pass"
+    }
+  ]
+}
