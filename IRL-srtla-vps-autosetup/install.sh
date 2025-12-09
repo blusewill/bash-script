@@ -24,7 +24,10 @@ read -r "belabox_username"
 
 printf "\n Please type your belabox password : "
 
-read -s "belabox_password"
+# Read Password Sliently
+stty -echo
+read -r "belabox_password"
+stty echo
 
 curl -fsSL https://raw.githubusercontent.com/blusewill/bash-script/refs/heads/main/IRL-srtla-vps-autosetup/config.json -o config.json
 
